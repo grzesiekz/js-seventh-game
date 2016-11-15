@@ -118,28 +118,25 @@ function playerPick(playerPick) {
 	setGamePoints();
 	switch (overallResult) {
 		case 0:
-			gameResult.innerHTML = 'Pojedynek trwa!';
-			break;
+			return;
 		case 1:
 			gameResult.innerHTML = player.name+' wygrał!';
 			BootstrapDialog.show({
     	       	title: 'Wygrana gracza '+player.name,
 	            message: 'Wynik: '+player.score+':'+computer.score+'. Gratulacje!'
         	});
-        	gameResult.innerHTML='';
-        	player.score = computer.score = 0;
-        	setGamePoints();
-			break;
+        	break;
 		case 2:
 			gameResult.innerHTML = 'Komputer wygrał!';
 			BootstrapDialog.show({
     	       	title: 'Komputer wygrał!',
 	            message: 'Wynik: '+player.score+':'+computer.score+'. Następnym razem pójdzie lepiej!'
         	});
-        	gameResult.innerHTML ='';
-        	player.score = computer.score = 0;
-        	setGamePoints();
+        	break;
 	}
+	gameResult.innerHTML='';
+    player.score = computer.score = 0;
+    setGamePoints();
 }
 
 function setGamePoints() {
